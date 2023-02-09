@@ -14,12 +14,19 @@ macro_rules! chain {
         ::std::iter::IntoIterator::into_iter($some)
     };
 
-    (...$some:tt, ...$spread:expr $(, $($tail:tt)*)?) => {
-        {
-            let c1 = ::std::iter::IntoIterator::into_iter($some);
-            let c2 = ::std::iter::Iterator::chain(c1, $spread);
-            $crate::chain![...c2, $($($tail)*)?]
-        }
+    (...$some:tt, ...$spread:expr $(,)?) => {
+        ::std::iter::Iterator::chain(
+            ::std::iter::IntoIterator::into_iter($some),
+            $spread)
+    };
+
+    (...$some:tt, ...$spread:expr, $($tail:tt)*) => {
+        $crate::chain![
+            ... ::std::iter::Iterator::chain(
+                ::std::iter::IntoIterator::into_iter($some),
+                $spread),
+            $($tail)*
+        ]
     };
 
     // shift a single elem into the starting literal
