@@ -34,21 +34,19 @@ Don't think so.
 Chain:
 
 */
-mod dangit;
+mod chain;
 
 #[macro_export]
 macro_rules! wec {
     () => { Vec::new() };
 
     ($($tail:tt)*) => {
-        ::std::iter::Iterator::collect::<Vec<_>>(chain![$($tail)*])
+        ::std::iter::Iterator::collect::<Vec<_>>($crate::chain![$($tail)*])
     };
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn it_works() {
         let empty: Vec<u32> = wec![];
