@@ -9,13 +9,13 @@ pub struct CycleN<I> {
 
 /** Iterator adaptor that repeats a sequence n times.
 
-    use wec::cycle_n;
+    use lit_vek::cycle_n;
 
     assert!(cycle_n([1, 2, 3], 2).eq([1, 2, 3, 1, 2, 3]));
 
 The sequence must be `IntoIter`, and the iterator must be `Clone`.
 
-This is mostly to enable the `wec![...elems, n]` syntax.
+This is mostly to enable the `vek![...elems, n]` syntax.
 */
 pub fn cycle_n<I: IntoIterator>(it: I, n: usize) -> CycleN<I::IntoIter>
 where
@@ -70,7 +70,7 @@ impl<I: Iterator + Clone> Iterator for CycleN<I> {
 Chain one more elements or iterables together into one sequence, using "spread"
 syntax.
 
-    # use {wec::iter, std::array};
+    # use {lit_vek::iter, std::array};
 
     let arr = [1, 2, 3];
     let vec = vec![8, 9, 10];
@@ -84,11 +84,11 @@ syntax.
 a "spread": they are chained into the resulting iterator with
 `std::iter::chain()`.
 
-See `[wec::wec]` in this crate for more explanation of the syntax.
+See `[lit_vek::vek]` in this crate for more explanation of the syntax.
 
 # Examples
 
-    use {wec::{iter, CycleN}, std::{array, iter}};
+    use {lit_vek::{iter, CycleN}, std::{array, iter}};
     let ints = [1, 2, 3];
 
     // Empty invocations of iter! expand to [std::iter::empty].
@@ -109,7 +109,7 @@ See `[wec::wec]` in this crate for more explanation of the syntax.
 
 # See also
 
-The `wec![]` macro in this crate is a drop-in replacement for `vec![]`,
+The `vek![]` macro in this crate is a drop-in replacement for `vec![]`,
 but enables the same spread syntax. It is equivalent to
 `iter![].collect::<Vec<_>>()`.
 
