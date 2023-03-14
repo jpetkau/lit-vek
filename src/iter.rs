@@ -1,4 +1,5 @@
 /** Iterator type returned by `cycle_n()` */
+#[derive(Clone, Debug)]
 pub struct CycleN<I> {
     // Both `orig` and `iter` are in Option so that we don't have to
     // call into_iter() or clone() more than necessary.
