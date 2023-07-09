@@ -12,10 +12,6 @@ literal sequences.
         vek![1, 2, 3, ...arr, 7, 8, 9],
         [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-    assert_eq!(
-        vek![1, 2, 3, ...arr, 7, 8, 9],
-        [1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
     // `iter!` provides the same syntax as iterator, similar to
     // itertools::chain()
     # use std::collections::VecDeque;

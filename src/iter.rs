@@ -16,7 +16,7 @@ pub struct CycleN<I> {
 
 The sequence must be `IntoIter`, and the iterator must be `Clone`.
 
-This is mostly to enable the `vek![...elems, n]` syntax.
+This is mostly to enable the `vek![...elems; n]` syntax.
 */
 pub fn cycle_n<I: IntoIterator>(it: I, n: usize) -> CycleN<I::IntoIter>
 where
